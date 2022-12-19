@@ -1,0 +1,155 @@
+{
+  "project_info": {
+    "project_number": "854269640875",
+    "project_id": "calculatorimg",
+    "storage_bucket": "calculatorimg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854269640875:android:9922d51d69f948fc1db7ee",
+        "android_client_info": {
+          "package_name": "com.rezzza.calculatorapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854269640875-fl47pq2l41hrjrquc4a00v97l7n44tr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiklo99if4nT_uJY9NqkLvkRfFwIyrjQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854269640875-fl47pq2l41hrjrquc4a00v97l7n44tr9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854269640875:android:91e181486464a2891db7ee",
+        "android_client_info": {
+          "package_name": "com.rezzza.calculatorapp.greencamera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854269640875-fl47pq2l41hrjrquc4a00v97l7n44tr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiklo99if4nT_uJY9NqkLvkRfFwIyrjQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854269640875-fl47pq2l41hrjrquc4a00v97l7n44tr9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854269640875:android:d18201323c9456921db7ee",
+        "android_client_info": {
+          "package_name": "com.rezzza.calculatorapp.greenfile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854269640875-fl47pq2l41hrjrquc4a00v97l7n44tr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiklo99if4nT_uJY9NqkLvkRfFwIyrjQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854269640875-fl47pq2l41hrjrquc4a00v97l7n44tr9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854269640875:android:7e4c38018dee807d1db7ee",
+        "android_client_info": {
+          "package_name": "com.rezzza.calculatorapp.redcamera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854269640875-fl47pq2l41hrjrquc4a00v97l7n44tr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiklo99if4nT_uJY9NqkLvkRfFwIyrjQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854269640875-fl47pq2l41hrjrquc4a00v97l7n44tr9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854269640875:android:3d42828b7e21e9271db7ee",
+        "android_client_info": {
+          "package_name": "com.rezzza.calculatorapp.redfile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854269640875-fl47pq2l41hrjrquc4a00v97l7n44tr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiklo99if4nT_uJY9NqkLvkRfFwIyrjQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854269640875-fl47pq2l41hrjrquc4a00v97l7n44tr9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

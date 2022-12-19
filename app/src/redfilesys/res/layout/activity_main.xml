@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#EBEBEB"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/rvly_header"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/name"
+            android:textColor="#00251A"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    <View
+        android:background="#8000251A"
+        android:layout_below="@+id/rvly_header"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_above="@+id/rvly_bottom"
+        android:layout_below="@+id/rvly_header"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_header"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#DAE6E4"
+            app:tabIndicatorHeight="0dp"
+            app:tabMode="fixed"
+            app:tabPaddingEnd="8dp"
+            app:tabPaddingStart="0dp" />
+        <View
+            android:background="#3300251A"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vwpg_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <View
+        android:layout_above="@+id/rvly_bottom"
+        android:background="#8000251A"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/rvly_bottom"
+        android:background="#bf360c"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <RelativeLayout
+            android:id="@+id/rvly_file"
+            android:background="?attr/selectableItemBackground"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/ic_baseline_file_present_24"
+                android:layout_centerInParent="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+        <View
+            android:layout_gravity="center"
+            android:background="#FF1E1E"
+            android:visibility="gone"
+            android:layout_width="1dp"
+            android:layout_height="40dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rvly_camera"
+            android:visibility="gone"
+            android:background="?attr/selectableItemBackground"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/ic_baseline_camera_alt_24"
+                android:layout_centerInParent="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:tint="@color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
