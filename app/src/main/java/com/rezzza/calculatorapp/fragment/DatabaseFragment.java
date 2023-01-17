@@ -24,8 +24,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rezzza.calculatorapp.R;
 import com.rezzza.calculatorapp.adapter.ResultAdapter;
-import com.rezzza.calculatorapp.dom.ResultDom;
-import com.rezzza.calculatorapp.model.DatabaseViewModel;
+import com.rezzza.calculatorapp.model.ResultDom;
+import com.rezzza.calculatorapp.viewmodel.DatabaseViewModel;
 
 import java.io.IOException;
 import java.util.ArrayList;

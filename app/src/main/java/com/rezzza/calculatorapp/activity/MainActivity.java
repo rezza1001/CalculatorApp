@@ -24,10 +24,13 @@ import com.rezzza.calculatorapp.adapter.PagerAdapter;
 import com.rezzza.calculatorapp.tools.FileProcessing;
 import com.rezzza.calculatorapp.tools.Utility;
 import com.rezzza.calculatorapp.view.TabItmeView;
+import com.skyhope.textrecognizerlibrary.TextScanner;
+import com.skyhope.textrecognizerlibrary.callback.TextExtractCallback;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -189,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
             String mediaPath = FileProcessing.getMainPath(this).getAbsolutePath()+"/"+FileProcessing.ROOT+"/"+ROOT_FILE;
             String file =mediaPath+"/certificateTemp.jpg";
             Uri uri = Uri.fromFile(new File(file));
+            process(uri);
             new Handler().postDelayed(() -> {
                 Intent intent = new Intent(mBroadcast);
                 intent.putExtra("request", requestCode);
@@ -205,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode != RESULT_OK){
                 return;
             }
-
+            process(data.getData());
             new Handler().postDelayed(() -> {
                 Intent intent = new Intent(mBroadcast);
                 intent.putExtra("request", requestCode);
@@ -215,6 +219,9 @@ public class MainActivity extends AppCompatActivity {
             },100);
         }
 
+    }
+
+    private void process(Uri uri){
 
     }
 

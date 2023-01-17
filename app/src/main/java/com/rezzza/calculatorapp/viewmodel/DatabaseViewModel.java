@@ -1,4 +1,4 @@
-package com.rezzza.calculatorapp.model;
+package com.rezzza.calculatorapp.viewmodel;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
@@ -17,7 +17,7 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 import com.rezzza.calculatorapp.database.table.ResultDB;
-import com.rezzza.calculatorapp.dom.ResultDom;
+import com.rezzza.calculatorapp.model.ResultDom;
 
 import java.util.ArrayList;
 
@@ -118,7 +118,7 @@ public class DatabaseViewModel extends AndroidViewModel {
             }
         }
         if (numA.toString().isEmpty() || numB.toString().isEmpty()){
-            showToastError("Not valid data image");
+            showToastError("The image you selected is unreadable. Please select a clearer image");
             return;
         }
 

@@ -1,4 +1,4 @@
-package com.rezzza.calculatorapp.dom;
+package com.rezzza.calculatorapp.model;
 
 import java.io.Serializable;
 

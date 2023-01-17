@@ -12,7 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rezzza.calculatorapp.R;
-import com.rezzza.calculatorapp.dom.ResultDom;
+import com.rezzza.calculatorapp.model.ResultDom;
 
 import java.util.ArrayList;
 

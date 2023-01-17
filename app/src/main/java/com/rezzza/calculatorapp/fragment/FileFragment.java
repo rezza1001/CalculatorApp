@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +24,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rezzza.calculatorapp.R;
 import com.rezzza.calculatorapp.adapter.ResultAdapter;
-import com.rezzza.calculatorapp.dom.ResultDom;
-import com.rezzza.calculatorapp.model.FileViewModel;
+import com.rezzza.calculatorapp.model.ResultDom;
+import com.rezzza.calculatorapp.viewmodel.FileViewModel;
 import com.rezzza.calculatorapp.tools.FileProcessing;
 
 import java.io.IOException;
