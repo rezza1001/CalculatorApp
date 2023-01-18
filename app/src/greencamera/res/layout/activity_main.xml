@@ -61,7 +61,7 @@
         android:layout_height="1dp"/>
     <LinearLayout
         android:id="@+id/rvly_bottom"
-        android:background="#00c853"
+        android:background="@color/greenDark"
         android:weightSum="2"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"

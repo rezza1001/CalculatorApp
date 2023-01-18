@@ -43,6 +43,11 @@ public class FileViewModel extends AndroidViewModel {
     }
 
     public void processImage(Bitmap bitmap){
+        if (bitmap!=null){
+            Log.e(TAG,"processImage bitmap null");
+            return;
+        }
+        Log.d(TAG,"processImage ");
         FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromBitmap(bitmap);
         FirebaseVision firebaseVision = FirebaseVision.getInstance();
         FirebaseVisionTextRecognizer firebaseVisionTextRecognizer = firebaseVision.getOnDeviceTextRecognizer();

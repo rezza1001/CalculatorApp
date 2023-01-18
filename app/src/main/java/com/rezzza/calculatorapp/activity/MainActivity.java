@@ -11,26 +11,22 @@ import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 import com.rezzza.calculatorapp.R;
-import com.rezzza.calculatorapp.adapter.PagerAdapter;
+import com.rezzza.calculatorapp.fragment.FileFragment;
 import com.rezzza.calculatorapp.tools.FileProcessing;
 import com.rezzza.calculatorapp.tools.Utility;
-import com.rezzza.calculatorapp.view.TabItmeView;
-import com.skyhope.textrecognizerlibrary.TextScanner;
-import com.skyhope.textrecognizerlibrary.callback.TextExtractCallback;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -43,10 +39,9 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
 
     ArrayList<String> listTab = new ArrayList<>();
-    TabLayout tab_header;
-    ViewPager2 vwpg_main;
+    private FrameLayout frame_body;
 
-    private String mBroadcast = "RESULT";
+    private final String mBroadcast = "RESULT";
 
     private static final String ROOT_FILE = "process";
 
@@ -54,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        frame_body = findViewById(R.id.frame_body);
 
         findViewById(R.id.rvly_camera).setOnClickListener(view -> openCamera());
         findViewById(R.id.rvly_file).setOnClickListener(view -> showFileChooser());
@@ -64,61 +60,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         createTab();
-
     }
 
     private void createTab(){
-        tab_header = findViewById(R.id.tab_header);
-        vwpg_main = findViewById(R.id.vwpg_main);
 
-        PagerAdapter pagerAdapter = new PagerAdapter(this, listTab);
-        vwpg_main.setAdapter(pagerAdapter);
-
-        listTab.add("Database Storage");
-        listTab.add("File Storage");
-        new TabLayoutMediator(tab_header, vwpg_main, this::configTab).attach();
-
-        tab_header.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                TabItmeView tabView = (TabItmeView) tab.getCustomView();
-                if (tabView != null){
-                    tabView.setSelected();
-                    if (tabView.getText().equalsIgnoreCase("Database Storage")){
-                        mBroadcast = "RESULT";
-                    }
-                    else {
-                        mBroadcast = "RESULT_2";
-                    }
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                TabItmeView tabView = (TabItmeView) tab.getCustomView();
-                if (tabView != null){
-                    tabView.unSelected();
-                }
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-    }
-
-    private void configTab(TabLayout.Tab tab, int position){
-        TabItmeView tabView = new TabItmeView(this,null);
-        String tabHolder = listTab.get(position);
-        tabView.setText(tabHolder);
-        tab.setCustomView(tabView);
-
-        if (position == 0){
-            tabView.setSelected();
+        String packageName = getPackageName();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        if (packageName.contains("greenfile")){
+            Fragment fragment = FileFragment.newInstance();
+            fragmentTransaction.replace(frame_body.getId(), fragment,"greenfile");
+            fragmentTransaction.attach(fragment);
+            fragmentTransaction.commit();
         }
+
     }
+
 
 
     private void showFileChooser() {

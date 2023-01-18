@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,7 @@ public class FileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Objects.requireNonNull(getContext()).registerReceiver(receiver, new IntentFilter("RESULT_2"));
+        Objects.requireNonNull(getContext()).registerReceiver(receiver, new IntentFilter("RESULT"));
     }
 
     @Override
@@ -87,6 +88,7 @@ public class FileFragment extends Fragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             Uri uri = intent.getParcelableExtra("data");
+            Log.d(TAG,"DATA Receive");
             processFileBrowser(uri);
         }
     };
@@ -94,7 +96,7 @@ public class FileFragment extends Fragment {
     @SuppressLint("NotifyDataSetChanged")
     private void initModel(){
         fileViewModel =  new ViewModelProvider(this).get(FileViewModel.class);
-        fileViewModel.initLiveResult().observe(this, resultDB -> {
+        fileViewModel.initLiveResult().observe(getViewLifecycleOwner(), resultDB -> {
             listResult.add(resultDB);
             adapter.notifyDataSetChanged();
         });

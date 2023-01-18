@@ -86,7 +86,7 @@
 
         <View
             android:layout_gravity="center"
-            android:background="#FF1E1E"
+            android:background="@color/redDark"
             android:visibility="gone"
             android:layout_width="1dp"
             android:layout_height="40dp"/>

@@ -35,21 +35,9 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_header"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="#DAE6E4"
-            app:tabIndicatorHeight="0dp"
-            app:tabMode="fixed"
-            app:tabPaddingEnd="8dp"
-            app:tabPaddingStart="0dp" />
-        <View
-            android:background="#3300251A"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vwpg_main"
+
+        <FrameLayout
+            android:id="@+id/frame_body"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
