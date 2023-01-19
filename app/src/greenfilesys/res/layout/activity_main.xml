@@ -23,13 +23,45 @@
             android:textStyle="bold" />
     </RelativeLayout>
     <View
+        android:id="@+id/view_line1"
         android:background="#8000251A"
         android:layout_below="@+id/rvly_header"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
+    <RelativeLayout
+        android:id="@+id/rvly_param"
+        android:background="#eceff1"
+        android:layout_below="@+id/view_line1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/txvw_type"
+            android:layout_marginStart="20dp"
+            android:layout_centerVertical="true"
+            android:text="File System"
+            android:textColor="#263238"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:src="@drawable/ic_drop_down"
+            android:layout_marginEnd="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+    </RelativeLayout>
+    <View
+        android:id="@+id/view_line2"
+        android:background="#8000251A"
+        android:layout_below="@+id/rvly_param"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
     <LinearLayout
         android:layout_above="@+id/rvly_bottom"
-        android:layout_below="@+id/rvly_header"
+        android:layout_below="@+id/view_line2"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="vertical"

@@ -16,66 +16,80 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
 
-            <TextView
-                android:id="@+id/txvw_no"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:text="1"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="#E7F0FF"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"/>
+                <TextView
+                    android:id="@+id/txvw_no"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:text="Input"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#E7F0FF"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"/>
 
-            <TextView
-                android:id="@+id/txvw_numA"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:text="1"
-                android:gravity="center"
-                android:minWidth="50dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                <TextView
+                    android:id="@+id/txvw_numA"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:text="1"
+                    android:gravity="center"
+                    android:minWidth="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
 
-            <TextView
-                android:id="@+id/txvw_exp"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:text="+"
-                android:gravity="center"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"/>
-            <TextView
-                android:id="@+id/txvw_numB"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:text="1"
-                android:gravity="center"
-                android:minWidth="50dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
-            <TextView
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:text="="
-                android:gravity="center"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"/>
-            <TextView
-                android:id="@+id/txvw_value"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:text="1"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:minWidth="50dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                <TextView
+                    android:id="@+id/txvw_exp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:text="+"
+                    android:gravity="center"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:id="@+id/txvw_numB"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:text="1"
+                    android:gravity="center"
+                    android:minWidth="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:text="Result"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#E7F0FF"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"/>
+                <TextView
+                    android:id="@+id/txvw_value"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:text="1"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:minWidth="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
         </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
 

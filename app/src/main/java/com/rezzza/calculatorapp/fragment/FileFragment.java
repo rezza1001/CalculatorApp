@@ -6,15 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
-import android.net.Uri;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,22 +21,21 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.rezzza.calculatorapp.MyApplication;
 import com.rezzza.calculatorapp.R;
 import com.rezzza.calculatorapp.adapter.ResultAdapter;
 import com.rezzza.calculatorapp.model.ResultDom;
-import com.rezzza.calculatorapp.viewmodel.FileViewModel;
 import com.rezzza.calculatorapp.tools.FileProcessing;
+import com.rezzza.calculatorapp.viewmodel.FileViewModel;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Mochamad Rezza Gumilang
  */
 
 public class FileFragment extends Fragment {
-    String TAG = "DatabaseFragment";
+    String TAG = "FileFragment";
     protected FileViewModel fileViewModel;
 
     ArrayList<ResultDom> listResult = new ArrayList<>();
@@ -60,8 +57,17 @@ public class FileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Objects.requireNonNull(getContext()).registerReceiver(receiver, new IntentFilter("RESULT"));
+        requireContext().registerReceiver(receiver, new IntentFilter("RESULT"));
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG,"onDestroy");
+        requireContext().unregisterReceiver(receiver);
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -87,9 +93,10 @@ public class FileFragment extends Fragment {
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Uri uri = intent.getParcelableExtra("data");
-            Log.d(TAG,"DATA Receive");
-            processFileBrowser(uri);
+            byte[] byteArray = MyApplication.byteData;
+            Log.d(TAG,"RECEIVE BROADCAST "+byteArray.length);
+            Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            fileViewModel.processImage(bmp);
         }
     };
 
@@ -109,17 +116,4 @@ public class FileFragment extends Fragment {
         fileViewModel.getResultDB();
     }
 
-
-    private void processFileBrowser(Uri contentURI ) {
-        try {
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(Objects.requireNonNull(getContext()).getContentResolver(), contentURI);
-            fileViewModel.processImage(bitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showToastError(String message){
-        Toast.makeText(getContext(),message, Toast.LENGTH_LONG).show();
-    }
 }

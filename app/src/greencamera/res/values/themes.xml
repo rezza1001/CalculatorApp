@@ -7,4 +7,11 @@
         <item name="colorAccent">@color/green</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="AppTheme.transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="android:windowFullscreen">true</item>-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>

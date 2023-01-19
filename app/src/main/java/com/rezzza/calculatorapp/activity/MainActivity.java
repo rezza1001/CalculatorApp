@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -20,6 +21,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.rezzza.calculatorapp.R;
+import com.rezzza.calculatorapp.dialog.OptionStorageDialog;
+import com.rezzza.calculatorapp.fragment.DatabaseFragment;
 import com.rezzza.calculatorapp.fragment.FileFragment;
 import com.rezzza.calculatorapp.tools.FileProcessing;
 import com.rezzza.calculatorapp.tools.Utility;
@@ -37,11 +40,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     String TAG = "MainActivity";
-
-    ArrayList<String> listTab = new ArrayList<>();
     private FrameLayout frame_body;
+    private TextView txvw_type;
 
-    private final String mBroadcast = "RESULT";
+    private String mType = "Database Storage";
+
 
     private static final String ROOT_FILE = "process";
 
@@ -50,32 +53,44 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         frame_body = findViewById(R.id.frame_body);
+        txvw_type = findViewById(R.id.txvw_type);
 
         findViewById(R.id.rvly_camera).setOnClickListener(view -> openCamera());
         findViewById(R.id.rvly_file).setOnClickListener(view -> showFileChooser());
+        findViewById(R.id.rvly_param).setOnClickListener(view -> showOptionTab());
 
         String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
         if (!Utility.hasPermission(this,permission)){
             return;
         }
-
         createTab();
     }
 
-    private void createTab(){
-
-        String packageName = getPackageName();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        if (packageName.contains("greenfile")){
-            Fragment fragment = FileFragment.newInstance();
-            fragmentTransaction.replace(frame_body.getId(), fragment,"greenfile");
-            fragmentTransaction.attach(fragment);
-            fragmentTransaction.commit();
-        }
-
+    private void showOptionTab(){
+        OptionStorageDialog dialog = new OptionStorageDialog(this);
+        dialog.show();
+        dialog.setOnSelectedListener(type -> {
+            mType = type;
+            createTab();
+        });
     }
 
+    private void createTab(){
+        txvw_type.setText(mType);
 
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        Fragment fragment;
+        if (mType.equals("File Storage")){
+            fragment = FileFragment.newInstance();
+            fragmentTransaction.replace(frame_body.getId(), fragment,"file");
+        }
+        else {
+            fragment = DatabaseFragment.newInstance();
+            fragmentTransaction.replace(frame_body.getId(), fragment,"database");
+        }
+        fragmentTransaction.attach(fragment);
+        fragmentTransaction.commit();
+    }
 
     private void showFileChooser() {
         String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -129,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 boolean deleted =  newfile.delete();
             }
             boolean created = newfile.createNewFile();
+            Log.d(TAG,"Create "+file+" "+created);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -145,19 +161,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2){
+
             String mediaPath = FileProcessing.getMainPath(this).getAbsolutePath()+"/"+FileProcessing.ROOT+"/"+ROOT_FILE;
             String file =mediaPath+"/certificateTemp.jpg";
             Uri uri = Uri.fromFile(new File(file));
-            process(uri);
-            new Handler().postDelayed(() -> {
-                Intent intent = new Intent(mBroadcast);
-                intent.putExtra("request", requestCode);
-                intent.putExtra("data", uri);
-                sendBroadcast(intent);
-                Log.d(TAG,"SEND BROADCAST");
-            },100);
+            Intent intent = new Intent();
+            intent.setData(uri);
+            intent.setClass(this,CroperImageActivity.class);
+            startActivityForResult(intent,3);
         }
-        else {
+        else if (requestCode == 1){
             if (data == null){
                 Toast.makeText(this,"Data is error", Toast.LENGTH_LONG).show();
                 return;
@@ -165,20 +178,16 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode != RESULT_OK){
                 return;
             }
-            process(data.getData());
+            data.setClass(this,CroperImageActivity.class);
+            startActivityForResult(data,3);
+        }
+        else if (requestCode == 3 && resultCode == RESULT_OK){
             new Handler().postDelayed(() -> {
-                Intent intent = new Intent(mBroadcast);
-                intent.putExtra("request", requestCode);
-                intent.putExtra("data", data.getData());
+                Intent intent = new Intent("RESULT");
                 sendBroadcast(intent);
-                Log.d(TAG,"SEND BROADCAST");
+                Log.d(TAG,"Notify");
             },100);
         }
-
-    }
-
-    private void process(Uri uri){
-
     }
 
 

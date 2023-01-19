@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rvly_root"
+    android:background="#33607d8b"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="4dp"
+        app:cardElevation="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:textColor="#000a12"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="Select Storage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <View
+                android:layout_marginBottom="10dp"
+                android:background="#33607d8b"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:id="@+id/txvw_file"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="File Storage"
+                android:textColor="#000a12"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+            <View
+                android:layout_marginBottom="10dp"
+                android:background="#33607d8b"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:id="@+id/txvw_db"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:text="Database Storage"
+                android:textColor="#000a12"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

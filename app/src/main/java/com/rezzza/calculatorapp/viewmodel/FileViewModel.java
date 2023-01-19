@@ -43,7 +43,7 @@ public class FileViewModel extends AndroidViewModel {
     }
 
     public void processImage(Bitmap bitmap){
-        if (bitmap!=null){
+        if (bitmap == null){
             Log.e(TAG,"processImage bitmap null");
             return;
         }
@@ -149,7 +149,7 @@ public class FileViewModel extends AndroidViewModel {
         db.setNumbA(Integer.parseInt(numA.toString()));
         db.setNumbB(Integer.parseInt(numB.toString()));
         db.setExpresion(exp);
-        int val = 0;
+        double val = 0;
         switch (exp) {
             case "+":
                 val = db.getNumbA() + db.getNumbB();

@@ -4,34 +4,34 @@ import java.io.Serializable;
 
 public class ResultDom implements Serializable {
 
-    private int numbA;
-    private int numbB;
-    private int value;
+    private double numbA;
+    private double numbB;
+    private double value;
     private int id;
     private String expresion;
 
 
-    public int getNumbA() {
+    public double getNumbA() {
         return numbA;
     }
 
-    public void setNumbA(int numbA) {
+    public void setNumbA(double numbA) {
         this.numbA = numbA;
     }
 
-    public int getNumbB() {
+    public double getNumbB() {
         return numbB;
     }
 
-    public void setNumbB(int numbB) {
+    public void setNumbB(double numbB) {
         this.numbB = numbB;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(double value) {
         this.value = value;
     }
 
@@ -56,9 +56,9 @@ public class ResultDom implements Serializable {
     }
     public void unpack(String text){
         String[] arrText = text.split("~");
-        setNumbA(Integer.parseInt(arrText[0]));
+        setNumbA(Double.parseDouble(arrText[0]));
         setExpresion(arrText[1]);
-        setNumbB(Integer.parseInt(arrText[2]));
-        setValue(Integer.parseInt(arrText[3]));
+        setNumbB(Double.parseDouble(arrText[2]));
+        setValue(Double.parseDouble(arrText[3]));
     }
 }

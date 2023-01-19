@@ -44,15 +44,12 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.AdapterVie
         holder.txvw_numB.setText(data.getNumbB()+"");
         holder.txvw_exp.setText(data.getExpresion());
         holder.txvw_value.setText(data.getValue()+"");
-        holder.txvw_no.setText((position + 1)+"");
         if ((position + 1 ) == mList.size()){
             holder.card_body.setCardBackgroundColor(Color.parseColor("#cfd8dc"));
         }
         else {
             holder.card_body.setCardBackgroundColor(Color.WHITE);
         }
-
-
 
     }
 
